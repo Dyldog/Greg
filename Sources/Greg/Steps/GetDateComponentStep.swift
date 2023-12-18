@@ -13,24 +13,27 @@ public final class GetDateComponentStep: ValueStep {
     public static var title: String { "Get date component" }
     public static var type: VariableType { .getDateComponentStep }
     
+    var component: CalendarComponentValue
     var date: TypedValue<DateValue>
     
-    init(date: TypedValue<DateValue>) {
+    init(component: CalendarComponentValue, date: TypedValue<DateValue>) {
+        self.component = component
         self.date = date
     }
     
-    public var protoString: String { "\(date.protoString).WEEK" }
-    public var valueString: String { "\(date.valueString).WEEK" }
+    public var protoString: String { "\(date.protoString).\(component.protoString.uppercased())" }
+    public var valueString: String { "\(date.valueString).\(component.valueString.uppercased())" }
     
     public func run(with variables: Variables) async throws -> VariableValue {
         let date = try await date.value.value(with: variables)
-        let week = Calendar.current.component(.weekOfYear, from: date.value)
-        return IntValue(value: week)
+        let value = Calendar.current.component(component.value, from: date.value)
+        return IntValue(value: value)
     }
 
     public static func defaultValue(for property: Properties) -> any EditableVariableValue {
         switch property {
         case .date: return TypedValue.value(DateValue.makeDefault())
+        case .component: return CalendarComponentValue(value: .weekOfMonth)
         }
     }
     
