@@ -24,8 +24,8 @@ public final class GetDateComponentStep: ValueStep {
     public var protoString: String { "\(date.protoString).\(component.protoString.uppercased())" }
     public var valueString: String { "\(date.valueString).\(component.valueString.uppercased())" }
     
-    public func run(with variables: Variables) async throws -> VariableValue {
-        let date = try await date.value.value(with: variables)
+    public func run(with variables: Variables, and scope: Scope) async throws -> VariableValue {
+        let date = try await date.value.value(with: variables, and: scope)
         let value = Calendar.current.component(component.value, from: date.value)
         return IntValue(value: value)
     }

@@ -26,7 +26,7 @@ public final class CalendarComponentValue: PrimitiveEditableVariableValue, Codab
     }
     public var protoString: String { "\(value.title)" }
     public var valueString: String { protoString }
-    public func value(with variables: Variables) async throws -> VariableValue {
+    public func value(with variables: Variables, and scope: Scope) async throws -> VariableValue {
         self
     }
     public func copy() -> CalendarComponentValue {
