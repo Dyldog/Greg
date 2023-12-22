@@ -10,31 +10,31 @@ import Armstrong
 import SwiftUI
 import DylKit
 
-final class DateValue: EditableVariableValue {
-    static var type: VariableType { .date }
+public final class DateValue: EditableVariableValue {
+    public static var type: VariableType { .date }
     
-    var protoString: String { "\(value.formatted())"}
-    var valueString: String { protoString }
+    public var protoString: String { "\(value.formatted())"}
+    public var valueString: String { protoString }
     
     @Published var value: Date
     
-    init(value: Date) {
+    public init(value: Date) {
         self.value = value
     }
     
-    func value(with variables: Variables, and scope: Scope) async throws -> VariableValue {
+    public func value(with variables: Variables, and scope: Scope) async throws -> VariableValue {
         self
     }
     
-    static func makeDefault() -> DateValue {
+    public static func makeDefault() -> DateValue {
         DateValue(value: .now)
     }
     
-    func add(_ other: VariableValue) throws -> VariableValue {
+    public func add(_ other: VariableValue) throws -> VariableValue {
         throw VariableValueError.variableCannotPerformOperation(.date, "add")
     }
     
-    func editView(scope: Scope, title: String, onUpdate: @escaping (DateValue) -> Void) -> AnyView {
+    public func editView(scope: Scope, title: String, onUpdate: @escaping (DateValue) -> Void) -> AnyView {
         return ExpandableStack(scope: scope, title: title) {
             HStack {
                 ProtoText(self.protoString)
@@ -54,5 +54,5 @@ final class DateValue: EditableVariableValue {
 }
 
 extension DateValue: CodeRepresentable {
-    var codeRepresentation: String { "TODO" }
+    public var codeRepresentation: String { "TODO" }
 }
