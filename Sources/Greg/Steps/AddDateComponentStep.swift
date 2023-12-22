@@ -28,8 +28,8 @@ public final class AddDateComponentStep: ValueStep {
     public var protoString: String { "\(date.protoString).\(component.protoString) += \(value.protoString)" }
     public var valueString: String { "\(date.valueString).\(component.valueString) += \(value.valueString)" }
     
-    public func run(with variables: Variables, and scope: Scope) async throws -> VariableValue {
-        let date: DateValue = try await date.value(with: variables, and: scope)
+    public func run(with variables: Variables, and scope: Scope) throws -> VariableValue {
+        let date: DateValue = try date.value(with: variables, and: scope)
         let newDate = Calendar.autoupdatingCurrent.date(byAdding: component.value, value: value.value, to: date.value)
         return newDate.map { DateValue(value: $0) } ?? NilValue()
     }

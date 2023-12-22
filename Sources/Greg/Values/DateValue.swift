@@ -22,7 +22,7 @@ public final class DateValue: EditableVariableValue {
         self.value = value
     }
     
-    public func value(with variables: Variables, and scope: Scope) async throws -> VariableValue {
+    public func value(with variables: Variables, and scope: Scope) throws -> VariableValue {
         self
     }
     

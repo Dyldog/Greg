@@ -20,7 +20,7 @@ public final class GetCurrentDateStep: ValueStep {
     public var protoString: String { "$CURRENT_DATE" }
     public var valueString: String { "$CURRENT_DATE" }
     
-    public func run(with variables: Variables, and scope: Scope) async throws -> VariableValue {
+    public func run(with variables: Variables, and scope: Scope) throws -> VariableValue {
         DateValue(value: .now)
     }
 
