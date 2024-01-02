@@ -48,7 +48,6 @@ extension Calendar.Component: PickableValue {
         case .nanosecond: return "nanosecond"
         case .calendar: return "calendar"
         case .timeZone: return "timeZone"
-        case .isLeapMonth: return "isLeapMonth"
         @unknown default: return "UNKNOWN!"
         }
     }

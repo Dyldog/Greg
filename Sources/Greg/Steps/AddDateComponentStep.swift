@@ -12,6 +12,7 @@ import Armstrong
 
 public final class AddDateComponentStep: ValueStep {
     
+    public static let categories: [ValueCategory] = [.dateSteps]
     public static var title: String { "Add date component to date" }
     public static var type: VariableType { .addDateComponentStep }
     

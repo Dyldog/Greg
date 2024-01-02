@@ -11,6 +11,7 @@ import SwiftUI
 import DylKit
 
 public final class DateValue: EditableVariableValue {
+    public static let categories: [ValueCategory] = [.dates]
     public static var type: VariableType { .date }
     
     public var protoString: String { "\(value.formatted())"}

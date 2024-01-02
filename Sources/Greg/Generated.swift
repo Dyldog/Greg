@@ -12,6 +12,7 @@ import DylKit
 
 public final class CalendarComponentValue: PrimitiveEditableVariableValue, Codable, Copying {
 
+    public static let categories: [ValueCategory] = [.dates]
     public static var type: VariableType { .calendarComponent }
     public static var defaultValue: Calendar.Component { .defaultValue }
     public var value: Calendar.Component

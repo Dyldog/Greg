@@ -12,6 +12,7 @@ import Armstrong
 
 public final class GetCurrentDateStep: ValueStep {
     
+    public static let categories: [ValueCategory] = [.dateSteps]
     public static var title: String { "Get the current date" }
     public static var type: VariableType { .getCurrentDateStep }
     
